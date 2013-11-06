@@ -14,7 +14,23 @@
         <script src="~/Content/app/js/app.js"></script>
     </head>
     <body>
-        <div ng-view></div>
-        @RenderBody()
+        <header class="navbar navbar-fixed-top">
+            <div class="dropdown pull-left">
+                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+                    DOMAINS
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="#/developers">Developers</a></li>
+                    <li><a href="#/projects">Projects</a></li>
+                </ul>
+            </div>
+        </header>
+        <div style="margin: 32px;">
+            <div role="main">
+                <div ng-view></div>
+                @RenderBody()
+            </div>
+        </div>
     </body>
 </html>

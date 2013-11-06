@@ -1,7 +1,10 @@
-﻿Developers view:  {{ctrlName}}
+﻿<h3>All hired developers:</h3>
 
-
-<div>
-   <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-   <button class='btn' ng-click="addAlert()">Add Alert</button>
+<div class="container">
+    <ul>
+        <li ng-repeat="developer in developers">
+            <p>{{developer.FirstName}}  {{developer.LastName}} - {{developer.BirthDate | date }}</p>
+            <p></p>
+        </li>
+    </ul>
 </div>

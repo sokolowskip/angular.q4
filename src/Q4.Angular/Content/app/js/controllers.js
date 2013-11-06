@@ -2,7 +2,7 @@
 
 var q4AngularControllers = angular.module('q4AngularControllers', []);
 
-q4AngularControllers.controller('developersCtrl', function developersCtrl($scope) {
+q4AngularControllers.controller('developersCtrl', function developersCtrl($scope, $http) {
     $scope.ctrlName = 'Developers controller.';
     
     $scope.alerts = [
@@ -17,6 +17,10 @@ q4AngularControllers.controller('developersCtrl', function developersCtrl($scope
     $scope.closeAlert = function (index) {
         $scope.alerts.splice(index, 1);
     };
+
+    $http.get('api/developers').success(function(data) {
+        $scope.developers = data;
+    });
 });
 
 q4AngularControllers.controller('projectsCtrl', function projectsCtrl($scope) {
