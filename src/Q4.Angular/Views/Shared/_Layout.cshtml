@@ -6,6 +6,7 @@
         <title>@ViewBag.Title</title>
         <link rel="stylesheet" href="~/Content/css/bootstrap.css">
         <link rel="stylesheet" href="~/Content/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="~/Content/css/Site.css">
         <script src="~/Scripts/angular/angular.js"></script>
         <script src="~/Scripts/angular/angular-route.js"></script>
         <script src="~/Scripts/ui-bootstrap-0.6.0.js"></script>
@@ -14,19 +15,26 @@
         <script src="~/Content/app/js/app.js"></script>
     </head>
     <body>
-        <header class="navbar navbar-fixed-top">
-            <div class="dropdown pull-left">
-                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-                    DOMAINS
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <li><a href="#/developers">Developers</a></li>
-                    <li><a href="#/projects">Projects</a></li>
-                </ul>
+        <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+            <div class="container">
+                <nav class="collapse navbar-collapse" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/developers">Developers</a></li>
+                        <li><a href="#/projects">Projects</a></li>
+                    </ul>
+                </nav>
+               @* <div class="dropdown pull-left">
+                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+                        DOMAINS
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                     
+                    </ul>
+                </div>*@
             </div>
         </header>
-        <div style="margin: 32px;">
+        <div class="container">
             <div role="main">
                 <div ng-view></div>
                 @RenderBody()

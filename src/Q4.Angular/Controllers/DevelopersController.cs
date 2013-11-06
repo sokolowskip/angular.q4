@@ -32,7 +32,7 @@ namespace Q4.Angular.Controllers
                 LastName = developer.LastName,
                 BirthDate = developer.BirthDate,
                 HireDate = developer.HireDate
-            }
+            };
         }
 
         private IEnumerable<DeveloperDTO> MapToDTO(List<Developer> toList)
@@ -42,7 +42,8 @@ namespace Q4.Angular.Controllers
                 FirstName = x.FirstName,
                 LastName = x.LastName,
                 BirthDate = x.BirthDate,
-                HireDate = x.HireDate
+                HireDate = x.HireDate,
+                Id = x.Id.ToString()
             }).ToList();
         }
     }

@@ -9,12 +9,16 @@ q4AngularApp.config([
     '$routeProvider',
     function($routeProvider) {
         $routeProvider
+            .when('/developers/new', {
+                templateUrl: 'Content/app/views/developers/create.html',
+                controller: 'developersCtrl'
+            })
             .when('/developers', {
-                templateUrl: 'Content/app/partials/developers-list.html',
+                templateUrl: 'Content/app/views/developers/list.html',
                 controller: 'developersCtrl'
             })
             .when('/projects', {
-                templateUrl: 'Content/app/partials/projects-list.html',
+                templateUrl: 'Content/app/views/projects-list.html',
                 controller: 'projectsCtrl'
             })
             .otherwise({

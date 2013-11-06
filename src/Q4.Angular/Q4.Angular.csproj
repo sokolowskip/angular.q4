@@ -169,6 +169,7 @@
     <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Infrastructure\DatabaseProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,8 +180,9 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\app\js\app.js" />
     <Content Include="Content\app\js\controllers.js" />
-    <Content Include="Content\app\partials\developers-list.html" />
-    <Content Include="Content\app\partials\projects-list.html" />
+    <Content Include="Content\app\views\developers\create.html" />
+    <Content Include="Content\app\views\developers\list.html" />
+    <Content Include="Content\app\views\projects-list.html" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
