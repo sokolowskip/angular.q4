@@ -754,3 +754,5 @@ tr.pager td {
             margin: 0;
         }
 }
+
+.nav, .pagination, .carousel a { cursor: pointer; }

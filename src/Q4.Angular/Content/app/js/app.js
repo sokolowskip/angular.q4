@@ -2,7 +2,8 @@
 
 var q4AngularApp = angular.module('q4AngularApp', [
     'ngRoute',
-    'q4AngularControllers']);
+    'q4AngularControllers',
+    'ui.bootstrap']);
 
 q4AngularApp.config([
     '$routeProvider',
