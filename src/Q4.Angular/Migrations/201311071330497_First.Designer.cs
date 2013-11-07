@@ -13,7 +13,7 @@ namespace Q4.Angular.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201311071326459_First"; }
+            get { return "201311071330497_First"; }
         }
         
         string IMigrationMetadata.Source

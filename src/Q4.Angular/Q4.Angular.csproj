@@ -169,9 +169,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201311071326459_First.cs" />
-    <Compile Include="Migrations\201311071326459_First.Designer.cs">
-      <DependentUpon>201311071326459_First.cs</DependentUpon>
+    <Compile Include="Migrations\201311071330497_First.cs" />
+    <Compile Include="Migrations\201311071330497_First.Designer.cs">
+      <DependentUpon>201311071330497_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AngularDbContext.cs" />
@@ -593,8 +593,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201311071326459_First.resx">
-      <DependentUpon>201311071326459_First.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201311071330497_First.resx">
+      <DependentUpon>201311071330497_First.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
