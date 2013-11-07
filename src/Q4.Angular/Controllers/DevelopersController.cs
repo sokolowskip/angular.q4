@@ -2,52 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using MongoDB.Driver.Builders;
-using Q4.Angular.Infrastructure;
 using Q4.Angular.Models;
 
 namespace Q4.Angular.Controllers
 {
     public class DevelopersController : ApiController
     {
+        private readonly AngularDbContext context = new AngularDbContext();
+
         public IEnumerable<DeveloperDTO> GetAllDevelopers()
         {
-            MongoDatabase database = DatabaseProvider.GetDateabse();
-            MongoCollection<Developer> collection = database.GetCollection<Developer>("developers");
-            MongoCursor<Developer> developers = collection.FindAll();
-
-            return MapToDTO(developers.ToList());
+            return MapToDTO(context.Developers.ToList());
         }
 
         public DeveloperDTO GetOne(string id)
         {
-            ObjectId objId = new ObjectId(id);
-            MongoDatabase database = DatabaseProvider.GetDateabse();
-            MongoCollection<Developer> collection = database.GetCollection<Developer>("developers");
-            Developer developer = collection.FindOne(Query<Developer>.EQ(x => x.Id, objId));
-            return MapToDTO(developer);
+            return MapToDTO(context.Developers.First(x => x.DeveloperId == new Guid(id)));
         }
 
         public void InsertDeveloper([FromBody] DeveloperDTO developer)
         {
-            var collection = DatabaseProvider.GetDateabse().GetCollection<Developer>("developers");
+
             var model = MaptoModel(developer);
             model.HireDate = DateTime.UtcNow.Date;
-            collection.Insert(model);
+            model.DeveloperId = Guid.NewGuid();
+            context.Developers.Add(model);
+            context.SaveChanges();
+
         }
 
         public void Put(string id, [FromBody] DeveloperDTO developer)
         {
-            ObjectId objId = new ObjectId(id);
-            MongoDatabase database = DatabaseProvider.GetDateabse();
-            MongoCollection<Developer> collection = database.GetCollection<Developer>("developers");
-            Developer developerModel = collection.FindOne(Query<Developer>.EQ(x => x.Id, objId));
-            developerModel.FirstName = developer.FirstName;
-            developerModel.LastName = developer.LastName;
-            developerModel.BirthDate = developer.BirthDate;
-            collection.Save(developerModel);
+            var devModel = context.Developers.First(x => x.DeveloperId == new Guid(id));
+            devModel.FirstName = developer.FirstName;
+            devModel.LastName = developer.LastName;
+            devModel.BirthDate = developer.BirthDate;
+            context.SaveChanges();
         }
 
         private Developer MaptoModel(DeveloperDTO developer)
@@ -60,7 +50,7 @@ namespace Q4.Angular.Controllers
             };
         }
 
-        private IEnumerable<DeveloperDTO> MapToDTO(List<Developer> toList)
+        private IEnumerable<DeveloperDTO> MapToDTO(IEnumerable<Developer> toList)
         {
             return toList.Select(MapToDTO).ToList();
         }
@@ -72,8 +62,14 @@ namespace Q4.Angular.Controllers
                 FirstName = x.FirstName,
                 LastName = x.LastName,
                 BirthDate = x.BirthDate,
-                Id = x.Id.ToString()
+                Id = x.DeveloperId.ToString()
             };
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            context.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
