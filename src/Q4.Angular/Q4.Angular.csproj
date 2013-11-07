@@ -181,6 +181,7 @@
     <Content Include="Content\app\js\app.js" />
     <Content Include="Content\app\js\controllers.js" />
     <Content Include="Content\app\views\developers\create.html" />
+    <Content Include="Content\app\views\developers\edit.html" />
     <Content Include="Content\app\views\developers\list.html" />
     <Content Include="Content\app\views\projects-list.html" />
     <Content Include="Content\css\bootstrap-theme.css" />

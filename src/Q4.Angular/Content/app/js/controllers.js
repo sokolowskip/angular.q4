@@ -2,25 +2,42 @@
 
 var q4AngularControllers = angular.module('q4AngularControllers', []);
 
-q4AngularControllers.controller('developersCtrl', function developersCtrl($scope, $http) {
-    $scope.ctrlName = 'Developers controller.';
-    
-    $scope.alerts = [
-    { type: 'error', msg: 'Oh snap! Change a few things up and try submitting again.' },
-    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-    ];
-
-    $scope.addAlert = function () {
-        $scope.alerts.push({ msg: "Another alert!" });
+q4AngularControllers.controller('developersCtrl', function developersCtrl($scope, $http, $routeParams, $location) {
+    $scope.getAll = function() {
+        $http.get('api/developers').success(function (data) {
+            console.log('getAll');
+            $scope.developers = data;
+        });
     };
 
-    $scope.closeAlert = function (index) {
-        $scope.alerts.splice(index, 1);
+    $scope.create = function () {
+        console.group("developer");
+        console.log($scope.developer.firstName);
+        console.log($scope.developer.lastName);
+        console.log($scope.developer.birthDate);
+        console.groupEnd("developer");
+
+        $http.post('api/developers', $scope.developer);
     };
 
-    $http.get('api/developers').success(function(data) {
-        $scope.developers = data;
-    });
+    $scope.findOne = function () {
+        console.group("findOne");
+        console.log("findOne() invoked");
+        console.log($routeParams.developerId);
+        console.groupEnd("findOne");
+        $http.get('api/developers/' + $routeParams.developerId).success(function(data) {
+            console.log(data);
+            $scope.developer = data;
+        });
+    };
+
+    $scope.update = function () {
+        console.group("update");
+        console.log("update() invoked");
+        console.log($scope.developer);
+        console.groupEnd("update");
+        $http.put('api/developers/' + $routeParams.developerId, $scope.developer);
+    };
 });
 
 q4AngularControllers.controller('projectsCtrl', function projectsCtrl($scope) {

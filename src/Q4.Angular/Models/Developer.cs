@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MongoDB.Bson;
 
 namespace Q4.Angular.Models
@@ -14,6 +15,8 @@ namespace Q4.Angular.Models
         public DateTime BirthDate { get; set; }
 
         public DateTime HireDate { get; set; }
+
+        public List<string> Skills { get; set; } 
     }
 
     public class DeveloperDTO
@@ -25,7 +28,5 @@ namespace Q4.Angular.Models
         public string LastName { get; set; }
 
         public DateTime BirthDate { get; set; }
-
-        public DateTime HireDate { get; set; }
     }
 }

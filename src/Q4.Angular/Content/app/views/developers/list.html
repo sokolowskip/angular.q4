@@ -1,10 +1,10 @@
 ﻿<h3>All hired developers:</h3>
 
-<div>
+<div ng-init="getAll()">
     <ul>
-        <li ng-repeat="developer in developers">
-            <p>{{developer.FirstName}}  {{developer.LastName}} - {{developer.BirthDate | date }}</p>
-            <p></p>
+        <li ng-repeat="developer in developers" >
+            {{developer.FirstName}}  {{developer.LastName}} - {{developer.BirthDate | date }}
+            <a href="#/developers/{{developer.Id}}/edit">Edit</a>
         </li>
     </ul>
 </div>

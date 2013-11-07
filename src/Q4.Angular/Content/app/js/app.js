@@ -9,20 +9,10 @@ q4AngularApp.config([
     '$routeProvider',
     function($routeProvider) {
         $routeProvider
-            .when('/developers/new', {
-                templateUrl: 'Content/app/views/developers/create.html',
-                controller: 'developersCtrl'
-            })
-            .when('/developers', {
-                templateUrl: 'Content/app/views/developers/list.html',
-                controller: 'developersCtrl'
-            })
-            .when('/projects', {
-                templateUrl: 'Content/app/views/projects-list.html',
-                controller: 'projectsCtrl'
-            })
-            .otherwise({
-                redirectTo: '/developers'
-            });
+            .when('/developers/new', { templateUrl: 'Content/app/views/developers/create.html', controller: 'developersCtrl' })
+            .when('/developers/:developerId/edit', { templateUrl: 'Content/app/views/developers/edit.html', controller: 'developersCtrl' })
+            .when('/developers', {  templateUrl: 'Content/app/views/developers/list.html', controller: 'developersCtrl' })
+            .when('/projects', { templateUrl: 'Content/app/views/projects-list.html', controller: 'projectsCtrl' })
+            .otherwise({ redirectTo: '/developers' });
     }
 ]);

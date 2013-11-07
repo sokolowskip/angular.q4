@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using MongoDB.Driver;
@@ -40,6 +41,26 @@ namespace Q4.Angular.Tests
             var developer = developers.FirstOrDefault();
 
             Assert.IsNotNull(developer);
+        }
+
+        [Test]
+        public void CanSaveDeveloperWithSkills()
+        {
+            var d = new Developer
+            {
+                FirstName = "Anna",
+                LastName = "Biedrzycka",
+                BirthDate = new DateTime(1983, 3, 16),
+                HireDate = new DateTime(2013, 11, 6),
+                Skills = new List<string> {"C#", "T-SQL", "Database managment"}
+            };
+
+            MongoClient client = new MongoClient();
+            MongoServer server = client.GetServer();
+            MongoDatabase database = server.GetDatabase("test");
+            var collection = database.GetCollection<Developer>("developers");
+
+            collection.Insert(d);
         }
     }
 }
