@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Http;
 using Q4.Angular.Models;
 
@@ -9,9 +10,9 @@ namespace Q4.Angular.Controllers
 {
     public class FeaturesController : EFApiController
     {
-        public IEnumerable<Feature> Get([FromBody] GetFeaturesRequest request)
+        public IEnumerable<Feature> Get(Guid projectId)
         {
-            return null;
+            return context.Projects.First(x => x.ProjectId == projectId).Features;
         }
 
         public void Post([FromBody] AddFeatureRequest request)

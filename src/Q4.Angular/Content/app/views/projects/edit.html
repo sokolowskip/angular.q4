@@ -33,8 +33,11 @@
         <h3>Features:</h3>
     </div>
     <ul>
-        <li ng-repeat="feature in project.features">
-            {{feature.Name}}    
+        <li class="thumbnail" ng-repeat="feature in features">
+            <div>
+                <p>{{feature.Name}}</p>
+                <a class="btn btn-primary" href="#/features/{{feature.Id}}/edit">Edit</a>  
+            </div>
         </li>
     </ul>
     <div addfeature onadd="addFeature(name)" ></div>

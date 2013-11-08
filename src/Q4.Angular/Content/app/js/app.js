@@ -27,7 +27,7 @@ q4AngularApp.directive("addfeature", function () {
            onadd: "&"
         },
         template: '<button role="button" class="btn btn-primary btn-lg active" ng-click="toggleContent()" ng-show="isAddButtonVisible">Add feature</button>'+
-                  '<div ng-hide="isAddButtonVisible" class="container"><div class="row"><div class="col-sm-5"><input type="text" class="form-control" ng-model="name" placeholder="New feature name..." /></div><div class="col-sm-1"><span class="glyphicon glyphicon-saved" ng-click="accept()"></span><span class="glyphicon glyphicon-remove" ng-click="toggleContent()"></span></div></div></div>',
+                  '<div ng-hide="isAddButtonVisible" class="container"><div class="row"><div class="col-sm-5"><input type="text" class="form-control" ng-model="name" placeholder="New feature name..." /></div><div class="col-sm-1"><span class="accept-action glyphicon glyphicon-saved" ng-click="accept()"></span><span class="reject-action glyphicon glyphicon-remove" ng-click="toggleContent()"></span></div></div></div>',
         link: function(scope, element, attrs) {
             scope.isAddButtonVisible = true;
 

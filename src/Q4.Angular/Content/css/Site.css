@@ -1,1 +1,10 @@
-﻿body { padding-top: 55px; }
+﻿body {
+    padding-top: 55px;
+}
+
+.accept-action {
+    color: green;
+}
+.reject-action {
+    color: red;
+}
