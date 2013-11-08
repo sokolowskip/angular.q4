@@ -6,32 +6,28 @@ using Q4.Angular.Models;
 
 namespace Q4.Angular.Controllers
 {
-    public class DevelopersController : ApiController
+    public class DevelopersController : EFApiController
     {
-        private readonly AngularDbContext context = new AngularDbContext();
-
-        public IEnumerable<DeveloperDTO> GetAllDevelopers()
+        
+        public IEnumerable<Developer> GetAllDevelopers()
         {
-            return MapToDTO(context.Developers.ToList());
+            return context.Developers.ToList();
         }
 
-        public DeveloperDTO GetOne(Guid id)
+        public Developer GetOne(Guid id)
         {
-            return MapToDTO(context.Developers.First(x => x.DeveloperId == id));
+            return context.Developers.First(x => x.DeveloperId == id);
         }
 
-        public void InsertDeveloper([FromBody] DeveloperDTO developer)
+        public void InsertDeveloper([FromBody] Developer developer)
         {
-
-            var model = MaptoModel(developer);
-            model.HireDate = DateTime.UtcNow.Date;
-            model.DeveloperId = Guid.NewGuid();
-            context.Developers.Add(model);
+            developer.HireDate = DateTime.UtcNow.Date;
+            developer.DeveloperId = Guid.NewGuid();
+            context.Developers.Add(developer);
             context.SaveChanges();
-
         }
 
-        public void Put(string id, [FromBody] DeveloperDTO developer)
+        public void Put(string id, [FromBody] Developer developer)
         {
             var devModel = context.Developers.First(x => x.DeveloperId == new Guid(id));
             devModel.FirstName = developer.FirstName;
@@ -40,36 +36,6 @@ namespace Q4.Angular.Controllers
             context.SaveChanges();
         }
 
-        private Developer MaptoModel(DeveloperDTO developer)
-        {
-            return new Developer
-            {
-                FirstName = developer.FirstName,
-                LastName = developer.LastName,
-                BirthDate = developer.BirthDate,
-            };
-        }
 
-        private IEnumerable<DeveloperDTO> MapToDTO(IEnumerable<Developer> toList)
-        {
-            return toList.Select(MapToDTO).ToList();
-        }
-
-        private static DeveloperDTO MapToDTO(Developer x)
-        {
-            return new DeveloperDTO
-            {
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                BirthDate = x.BirthDate,
-                Id = x.DeveloperId.ToString()
-            };
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            context.Dispose();
-            base.Dispose(disposing);
-        }
     }
 }

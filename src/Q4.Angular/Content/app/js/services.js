@@ -19,3 +19,11 @@ q4AngularServices.factory('Developer', ['$resource',
           {},
           { update: { method: 'PUT' } });
   }]);
+
+q4AngularServices.factory('Feature', ['$resource',
+  function ($resource) {
+      return $resource(
+          'api/features/:featureId',
+          {},
+          { update: { method: 'PUT' } });
+  }]);

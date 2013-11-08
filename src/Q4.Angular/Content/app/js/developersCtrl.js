@@ -8,14 +8,14 @@ q4AngularControllers.controller('developersCtrl', function developersCtrl($scope
 
 q4AngularControllers.controller('developersDetailCtrl', function developersDetailCtrl($scope, Developer, $routeParams, $location) {
     $scope.create = function () {
-        console.group("developer");
-        console.log($scope.developer.firstName);
-        console.log($scope.developer.lastName);
-        console.log($scope.developer.birthDate);
-        console.groupEnd("developer");
+        var developer = new Developer({
+            firstName: $scope.developer.firstName,
+            lastName: $scope.developer.lastName,
+            birthDate: $scope.developer.birthDate
+        });
 
-        $http.post('api/developers', $scope.developer).success(function() {
-            $location.path('#/developers');
+        developer.$save(function() {
+            $location.path("developers");
         });
     };
 

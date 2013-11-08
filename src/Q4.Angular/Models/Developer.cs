@@ -15,15 +15,4 @@ namespace Q4.Angular.Models
 
         public DateTime HireDate { get; set; }
     }
-
-    public class DeveloperDTO
-    {
-        public string Id { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public DateTime BirthDate { get; set; }
-    }
 }

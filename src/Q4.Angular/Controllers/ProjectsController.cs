@@ -8,21 +8,19 @@ using Q4.Angular.Models;
 
 namespace Q4.Angular.Controllers
 {
-    public class ProjectsController : ApiController
+    public class ProjectsController : EFApiController
     {
-        private readonly AngularDbContext context = new AngularDbContext();
-
-        public IEnumerable<ProjectDTO> Get()
+        public IEnumerable<Project> Get()
         {
-            return context.Projects.ToList().Select(x => MapToDTO(x));
+            return context.Projects.ToList();
         }
 
-        public ProjectDTO Get(Guid id)
+        public Project Get(Guid id)
         {
-            return MapToDTO(context.Projects.First(x => x.ProjectId == id));
+            return context.Projects.First(x => x.ProjectId == id);
         }
 
-        public void Post([FromBody] ProjectDTO project)
+        public void Post([FromBody] Project project)
         {
             var model = new Project()
             {
@@ -35,30 +33,13 @@ namespace Q4.Angular.Controllers
             context.SaveChanges();
         }
 
-        public void Put(Guid id, [FromBody] ProjectDTO project)
+        public void Put(Guid id, [FromBody] Project project)
         {
             var projModel = context.Projects.First(x => x.ProjectId == id);
             projModel.Name = project.Name;
             projModel.ClientName = project.ClientName;
             projModel.Technology = project.Technology;
             context.SaveChanges();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            context.Dispose();
-            base.Dispose(disposing);
-        }
-
-        private ProjectDTO MapToDTO(Project project)
-        {
-            return new ProjectDTO
-            {
-                Name = project.Name,
-                ClientName = project.ClientName,
-                Technology = project.Technology,
-                ProjectId = project.ProjectId
-            };
         }
     }
 }

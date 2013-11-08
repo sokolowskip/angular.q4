@@ -1,4 +1,7 @@
 ﻿<div class="container">
+    <div class="page-header">
+        <h3>Edit project</h3>
+    </div>
     <form class="form-horizontal" role="form" ng-submit="update()" ng-init="findOne()">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="name">Name</label>
@@ -25,4 +28,16 @@
             </div>
         </div>
     </form>
+    <div ng-controller="featuresCtrl">
+    <div class="page-header">
+        <h3>Features:</h3>
+    </div>
+    <ul>
+        <li ng-repeat="feature in project.features">
+            {{feature.Name}}    
+        </li>
+    </ul>
+    <div addfeature onadd="addFeature(name)" ></div>
+    </div>
 </div>
+
