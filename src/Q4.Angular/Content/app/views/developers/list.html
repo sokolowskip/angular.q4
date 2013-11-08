@@ -1,13 +1,22 @@
-﻿<h3>All hired developers:</h3>
-
-<div ng-init="getAll()">
-    <ul>
-        <li ng-repeat="developer in developers" >
-            {{developer.FirstName}}  {{developer.LastName}} - {{developer.BirthDate | date }}
-            <a href="#/developers/{{developer.Id}}/edit">Edit</a>
-        </li>
-    </ul>
-</div>
+﻿<h3>List of all developers:</h3>
 
 
- <a role="button" class="btn" href="#/developers/new" >Add developer</a>
+<ul>
+    <li ng-repeat="developer in developers" class="thumbnail" >
+        <div class="container">
+            <div class="row">
+                <h3 class="col-sm-12"><strong>{{developer.FirstName}} {{developer.LastName}}</strong></h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">{{developer.BirthDate | date }}</div>
+            </div>
+            <div class="row">
+                <a class="btn btn-primary" href="#/developers/{{developer.Id}}/edit">Edit</a>    
+            </div>
+        </div>
+    </li>
+     <a role="button" class="btn btn-primary btn-lg active" href="#/developers/new" >Add developer</a>
+</ul>
+
+
+

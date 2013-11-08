@@ -1,0 +1,15 @@
+﻿<h3>List of all projects:</h3>
+<ul>
+    <li ng-repeat="project in projects" class="thumbnail">
+        <div class="container">
+            <div class="row"><h3 class="col-sm-12"><strong>{{project.Name}}</strong></h3></div>
+            <div class="row"><p class="col-sm-2"><strong>Client</strong></p><p class="col-md-10">{{project.ClientName}}</p></div>
+            <div class="row"><p class="col-sm-2"><strong>Technolgies</strong></p><p class="col-md-10">{{project.Technology}}</p></div>
+            <div class="row">
+                <a href="#/projects/{{project.ProjectId}}/edit" class="btn btn-primary active" role="button"> Edit </a>
+                <a href="#/features/{{project.ProjectId}}/new" class="btn btn-default active" role="button">Add feature</a>
+            </div>
+        </div>
+    </li>
+    <a href="#/projects/new" class="btn btn-primary btn-lg active" role="button">Add project</a>
+</ul>

@@ -14,8 +14,6 @@ namespace Q4.Angular.Models
         public DateTime BirthDate { get; set; }
 
         public DateTime HireDate { get; set; }
-
-        public IList<Project> Projects { get; set; }
     }
 
     public class DeveloperDTO

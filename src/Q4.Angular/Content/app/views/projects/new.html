@@ -1,0 +1,28 @@
+﻿<div class="container">
+    <form class="form-horizontal" role="form" ng-submit="create()">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">Name</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" ng-model="project.name" id="name" placeholder="Name"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="clientName">Client</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" ng-model="project.clientName" id="clientName" placeholder="Client Name"/>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="technology">Technologies</label><br/>
+            <div class="col-sm-4">
+                <textarea  ng-model="project.technology" id="technology" class="form-control" rows="3" placeholder="Used technologies..."></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>

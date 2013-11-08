@@ -15,9 +15,9 @@ namespace Q4.Angular.Controllers
             return MapToDTO(context.Developers.ToList());
         }
 
-        public DeveloperDTO GetOne(string id)
+        public DeveloperDTO GetOne(Guid id)
         {
-            return MapToDTO(context.Developers.First(x => x.DeveloperId == new Guid(id)));
+            return MapToDTO(context.Developers.First(x => x.DeveloperId == id));
         }
 
         public void InsertDeveloper([FromBody] DeveloperDTO developer)

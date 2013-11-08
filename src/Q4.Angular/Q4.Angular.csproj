@@ -165,6 +165,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -173,20 +174,36 @@
     <Compile Include="Migrations\201311071330497_First.Designer.cs">
       <DependentUpon>201311071330497_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201311071405390_MoreInProjects.cs" />
+    <Compile Include="Migrations\201311071405390_MoreInProjects.Designer.cs">
+      <DependentUpon>201311071405390_MoreInProjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311080906209_Add-Features.cs" />
+    <Compile Include="Migrations\201311080906209_Add-Features.Designer.cs">
+      <DependentUpon>201311080906209_Add-Features.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AngularDbContext.cs" />
     <Compile Include="Models\Developer.cs" />
+    <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\app\js\app.js" />
-    <Content Include="Content\app\js\controllers.js" />
+    <Content Include="Content\app\js\developersCtrl.js" />
+    <Content Include="Content\app\js\featuresCtrl.js" />
+    <Content Include="Content\app\js\projectsCtrl.js" />
+    <Content Include="Content\app\js\services.js" />
     <Content Include="Content\app\views\developers\create.html" />
     <Content Include="Content\app\views\developers\edit.html" />
     <Content Include="Content\app\views\developers\list.html" />
+    <Content Include="Content\app\views\features\new.html" />
     <Content Include="Content\app\views\projects-list.html" />
+    <Content Include="Content\app\views\projects\edit.html" />
+    <Content Include="Content\app\views\projects\list.html" />
+    <Content Include="Content\app\views\projects\new.html" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -595,6 +612,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201311071330497_First.resx">
       <DependentUpon>201311071330497_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311071405390_MoreInProjects.resx">
+      <DependentUpon>201311071405390_MoreInProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311080906209_Add-Features.resx">
+      <DependentUpon>201311080906209_Add-Features.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
