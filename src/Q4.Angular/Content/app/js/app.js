@@ -18,7 +18,7 @@ q4AngularApp.config([
             .when('/projects/:projectId/edit', { templateUrl: 'Content/app/views/projects/edit.html', controller: 'detailProjectCtrl' })
             .when('/features/:featureId/edit', { templateUrl: 'Content/app/views/features/edit.html', controller: 'featureDetailsCtrl' })
             .when('/tasks/new', {templateUrl: 'Content/app/views/tasks/new.html', controller : 'tasksCtrl'})
-            .otherwise({ redirectTo: '/developers' });
+            ;
     }
 ]);
 

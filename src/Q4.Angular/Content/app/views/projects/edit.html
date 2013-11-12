@@ -29,18 +29,23 @@
         </div>
     </form>
     <div ng-controller="featuresCtrl">
-    <div class="page-header">
-        <h3>Features:</h3>
+        <div class="page-header">
+            <h3>Features</h3>
+        </div>
+        <ul>
+            <li class="thumbnail" ng-repeat="feature in features">
+                <div>
+                    <p>{{feature.Name}}</p>
+                    <a class="btn btn-primary" href="#/features/{{feature.FeatureId}}/edit">Edit</a>  
+                </div>
+            </li>
+        </ul>
+        <div addfeature onadd="addFeature(name)" ></div>
     </div>
-    <ul>
-        <li class="thumbnail" ng-repeat="feature in features">
-            <div>
-                <p>{{feature.Name}}</p>
-                <a class="btn btn-primary" href="#/features/{{feature.FeatureId}}/edit">Edit</a>  
-            </div>
-        </li>
-    </ul>
-    <div addfeature onadd="addFeature(name)" ></div>
+    <div ng-controller="projectStatisticsCtrl">
+        <div class="page-header">
+            <h3>Statistics</h3>
+        </div>
     </div>
 </div>
 

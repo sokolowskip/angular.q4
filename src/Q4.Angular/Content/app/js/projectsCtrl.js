@@ -1,4 +1,5 @@
-﻿'use strict';
+﻿
+'use strict';
 
 q4AngularControllers.controller('projectsCtrl', function projectsCtrl($scope, Project) {
     $scope.projects = Project.query();
@@ -28,4 +29,8 @@ q4AngularControllers.controller('detailProjectCtrl', function detailProjectsCtrl
     $scope.update = function () {
         $scope.project.$update({ projectId: $routeParams.projectId });
     };
+});
+
+q4AngularControllers.controller('projectStatisticsCtrl', function projectStatisticsCtrl($scope) {
+
 });

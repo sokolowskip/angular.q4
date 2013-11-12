@@ -4,15 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using Q4.Angular.Models;
 
 namespace Q4.Angular.Controllers
 {
     public class ProjectsController : EFApiController
     {
-        public IEnumerable<Project> Get()
+        public IEnumerable<ProjectDTO> Get()
         {
-            return context.Projects.ToList();
+            return context.Projects.ToList().Select(Mapper.Map<ProjectDTO>);
         }
 
         public Project Get(Guid id)

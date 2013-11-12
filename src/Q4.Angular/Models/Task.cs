@@ -16,6 +16,10 @@ namespace Q4.Angular.Models
 
         public DateTime? DueDate { get; set; }
 
+        public DateTime? FinishDate { get; set; }
+
+        public string Status { get; set; }
+
         public decimal? ExpectedWorkload { get; set; }
     }
 }

@@ -26,7 +26,7 @@ q4AngularControllers.controller('featureDetailsCtrl', function featureDetailsCtr
     };
 });
 
-q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Developer, Project, Task) {
+q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Developer, Project, Task, FeaturesByProject) {
     $scope.featuresVisible = false;
 
     $scope.projects = Project.query();
@@ -58,7 +58,7 @@ q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Develope
         console.log($scope.project);
 
         $scope.task.Feature = null;
-        $scope.features = $scope.project.Features;
+        $scope.features = FeaturesByProject.query({projectId: $scope.project.ProjectId});
         $scope.featuresVisible = true;
 
         console.groupEnd("onProjectChanged");

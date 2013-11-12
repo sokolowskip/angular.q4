@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
@@ -169,6 +175,7 @@
     <Compile Include="Controllers\FeaturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\StatisticsPerStatusController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,6 +200,10 @@
     <Compile Include="Migrations\201311121201243_Change-Name-Of-Developer.cs" />
     <Compile Include="Migrations\201311121201243_Change-Name-Of-Developer.Designer.cs">
       <DependentUpon>201311121201243_Change-Name-Of-Developer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311121341115_MoreProperties.cs" />
+    <Compile Include="Migrations\201311121341115_MoreProperties.Designer.cs">
+      <DependentUpon>201311121341115_MoreProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AngularDbContext.cs" />
@@ -642,6 +653,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311121201243_Change-Name-Of-Developer.resx">
       <DependentUpon>201311121201243_Change-Name-Of-Developer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311121341115_MoreProperties.resx">
+      <DependentUpon>201311121341115_MoreProperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
