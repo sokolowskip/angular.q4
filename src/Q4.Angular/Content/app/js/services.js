@@ -33,9 +33,14 @@ q4AngularServices.factory('FeaturesByProject', ['$resource',
         return $resource('api/Featuresbyproject/:projectId', {});
     }]);
 
-q4AngularServices.factory('TasksPerStatusController', ['$resource',
+q4AngularServices.factory('TasksPerStatus', ['$resource',
     function ($resource) {
         return $resource('api/TasksPerStatus/:projectId', {});
+    }]);
+
+q4AngularServices.factory('FinishedTasksPerDay', ['$resource',
+    function ($resource) {
+        return $resource('api/FinishedTasksPerDay/:projectId', {});
     }]);
 
 q4AngularServices.factory('Task', ['$resource',

@@ -31,9 +31,9 @@ q4AngularControllers.controller('detailProjectCtrl', function detailProjectsCtrl
     };
 });
 
-q4AngularControllers.controller('projectStatisticsCtrl', function projectStatisticsCtrl($scope, $routeParams, TasksPerStatusController) {
-     TasksPerStatusController.query({ projectId: $routeParams.projectId }, function (data) {
-        console.group("from ctrl");
+q4AngularControllers.controller('projectStatisticsCtrl', function projectStatisticsCtrl($scope, $routeParams, TasksPerStatus, FinishedTasksPerDay) {
+    TasksPerStatus.query({ projectId: $routeParams.projectId }, function (data) {
+        console.group("TasksPerStatus");
         console.log(data);
         $scope.tasksPerStatus = data.map(function(single) {
             return {
@@ -42,6 +42,24 @@ q4AngularControllers.controller('projectStatisticsCtrl', function projectStatist
             };
         });
         console.log($scope.tasksPerStatus);
-        console.groupEnd("from ctrl");
-    });
+        console.groupEnd("TasksPerStatus");
+     });
+    
+    FinishedTasksPerDay.query({ projectId: $routeParams.projectId }, function (data) {
+         console.group("FinishedTasksPerDay");
+         console.log(data);
+         $scope.finishedTasksPerDay = data.map(function(single) {
+             return {
+                 y: single.Count,
+                 x: new Date(single.Date)
+             };
+         });
+        var toType = function(obj) {
+            return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+        };
+            
+         console.log($scope.finishedTasksPerDay);
+        console.log(toType($scope.finishedTasksPerDay[0].x));
+         console.groupEnd("FinishedTasksPerDay");
+     });
 });
