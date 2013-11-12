@@ -8,3 +8,7 @@
 .reject-action {
     color: red;
 }
+
+.hand-cursor {
+    cursor: pointer
+}

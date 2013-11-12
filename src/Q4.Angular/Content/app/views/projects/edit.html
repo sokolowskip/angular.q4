@@ -46,6 +46,10 @@
         <div class="page-header">
             <h3>Statistics</h3>
         </div>
-        <div statpiechart items="tasksPerStatus"></div>
+        <tabset>
+            <tab class="hand-cursor" heading="Number of tasks per status"><div statpiechart items="tasksPerStatus"></div></tab>
+            <tab class="hand-cursor" heading="Finished tasks per day"><div statcolumnchart></div></tab>
+        </tabset>
+
     </div>
 </div>
