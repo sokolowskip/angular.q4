@@ -16,9 +16,9 @@ namespace Q4.Angular.Controllers
             return context.Projects.ToList().Select(Mapper.Map<ProjectDTO>);
         }
 
-        public Project Get(Guid id)
+        public ProjectDTO Get(Guid id)
         {
-            return context.Projects.First(x => x.ProjectId == id);
+            return Mapper.Map<ProjectDTO>(context.Projects.First(x => x.ProjectId == id));
         }
 
         public void Post([FromBody] Project project)

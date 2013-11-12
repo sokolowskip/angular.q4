@@ -33,6 +33,11 @@ q4AngularServices.factory('FeaturesByProject', ['$resource',
         return $resource('api/Featuresbyproject/:projectId', {});
     }]);
 
+q4AngularServices.factory('TasksPerStatusController', ['$resource',
+    function ($resource) {
+        return $resource('api/TasksPerStatus/:projectId', {});
+    }]);
+
 q4AngularServices.factory('Task', ['$resource',
   function ($resource) {
       return $resource(

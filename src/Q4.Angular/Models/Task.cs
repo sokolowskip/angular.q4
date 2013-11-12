@@ -4,6 +4,11 @@ namespace Q4.Angular.Models
 {
     public class Task
     {
+        public Task()
+        {
+            Status = "Assigned";
+        }
+
         public Guid TaskId { get; set; }
 
         public virtual Developer Developer { get; set; }

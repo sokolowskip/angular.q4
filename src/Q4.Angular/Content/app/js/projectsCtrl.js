@@ -31,6 +31,17 @@ q4AngularControllers.controller('detailProjectCtrl', function detailProjectsCtrl
     };
 });
 
-q4AngularControllers.controller('projectStatisticsCtrl', function projectStatisticsCtrl($scope) {
-
+q4AngularControllers.controller('projectStatisticsCtrl', function projectStatisticsCtrl($scope, $routeParams, TasksPerStatusController) {
+     TasksPerStatusController.query({ projectId: $routeParams.projectId }, function (data) {
+        console.group("from ctrl");
+        console.log(data);
+        $scope.tasksPerStatus = data.map(function(single) {
+            return {
+                y: single.Count,
+                name: single.StatusName
+            };
+        });
+        console.log($scope.tasksPerStatus);
+        console.groupEnd("from ctrl");
+    });
 });

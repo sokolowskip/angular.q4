@@ -29,7 +29,8 @@ q4AngularApp.directive("addfeature", function () {
         },
         template: '<button role="button" class="btn btn-primary btn-lg active" ng-click="toggleContent()" ng-show="isAddButtonVisible">Add feature</button>'+
                   '<div ng-hide="isAddButtonVisible" class="container"><div class="row"><div class="col-sm-5"><input type="text" class="form-control" ng-model="name" placeholder="New feature name..." /></div><div class="col-sm-1"><span class="accept-action glyphicon glyphicon-saved" ng-click="accept()"></span><span class="reject-action glyphicon glyphicon-remove" ng-click="toggleContent()"></span></div></div></div>',
-        link: function(scope, element, attrs) {
+        link: function (scope, element, attrs) {
+            console.log("add feature directive");
             scope.isAddButtonVisible = true;
 
             scope.toggleContent = function() {
@@ -44,6 +45,55 @@ q4AngularApp.directive("addfeature", function () {
 
         }
         
+    };
+});
+
+q4AngularApp.directive("statpiechart", function () {
+    return {
+        scope: {
+            items: '='
+        },
+        template: '<div id="container" style="margin: 0 auto">not working</div>',
+        link: function(scope) {
+            console.log("pieChart directive is using");
+            var chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'container',
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Number of tasks per status'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            color: '#000000',
+                            connectorColor: '#000000',
+                            format: '<b>{point.name}</b>: {point.y} ({point.percentage:.1f}%)'
+                        }
+                    }
+                },
+                series: [
+                    {
+                        type: 'pie',
+                        name: 'Browser share'
+                    }
+                ]
+            });
+            scope.$watch("items", function (data) {
+                console.log(data);
+                chart.series[0].setData(data);
+            }, true);
+        }
+    
     };
 });
 
