@@ -16,7 +16,8 @@ q4AngularApp.config([
             .when('/projects', { templateUrl: 'Content/app/views/projects/list.html', controller: 'projectsCtrl' })
             .when('/projects/new', { templateUrl: 'Content/app/views/projects/new.html', controller: 'newProjectCtrl' })
             .when('/projects/:projectId/edit', { templateUrl: 'Content/app/views/projects/edit.html', controller: 'detailProjectCtrl' })
-            .when('/features/:projectId/new', { templateUrl: 'Content/app/views/features/new.html' })
+            .when('/features/:featureId/edit', { templateUrl: 'Content/app/views/features/edit.html', controller: 'featureDetailsCtrl' })
+            .when('/tasks/new', {templateUrl: 'Content/app/views/tasks/new.html', controller : 'tasksCtrl'})
             .otherwise({ redirectTo: '/developers' });
     }
 ]);
@@ -45,3 +46,4 @@ q4AngularApp.directive("addfeature", function () {
         
     };
 });
+

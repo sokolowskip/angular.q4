@@ -1,0 +1,53 @@
+﻿<div class="container">
+    <div class="page-header">
+        <h3>New task</h3>
+    </div>
+
+    <form class="form-horizontal" role="form" ng-submit="create()">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="developer">Developer</label>
+            <div class="col-sm-4">
+                <select id="developer" class="form-control" name="developer" ng-options="(developer.FirstName + ' ' + developer.LastName) for developer in developers | orderBy:LastName" ng-model="task.Developer" required></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="project">Project</label>
+            <div class="col-sm-4">
+                <select id="Select1" class="form-control" name="project" ng-options="project.Name for project in projects" ng-model="project" ng-change="onProjectChanged()"></select>
+            </div>
+            <label class="col-sm-1 control-label" for="feature" ng-show="featuresVisible">Feature</label>
+            <div class="col-sm-4" ng-show="featuresVisible">
+                <select id="feature" class="form-control" name="feature" ng-options="feature.Name for feature in features" ng-model="task.Feature"></select>                
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">Name</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" ng-model="task.Name" id="name" placeholder="Name"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="expectedWorkload">Excepted Workload</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" ng-model="task.ExpectedWorkload" id="exceptedWorkload" placeholder="Excepted Workload" min="0" max="160" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="dueDate">Due Date</label>
+            <div class="col-sm-4">
+                <input type="text" datepicker-popup="yyyy-MM-dd" class="form-control" ng-model="task.DueDate" id="dueDate" placeholder="Due Date"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="description">Description</label><br/>
+            <div class="col-sm-4">
+                <textarea  ng-model="task.Description" id="description" class="form-control" rows="4" placeholder="Description..."></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>

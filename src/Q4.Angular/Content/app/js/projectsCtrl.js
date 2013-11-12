@@ -29,21 +29,3 @@ q4AngularControllers.controller('detailProjectCtrl', function detailProjectsCtrl
         $scope.project.$update({ projectId: $routeParams.projectId });
     };
 });
-
-q4AngularControllers.controller('featuresCtrl', function featuresCtrl($scope, $routeParams, Feature) {
-    $scope.features = Feature.query({ projectId : $routeParams.projectId });
-
-    $scope.addFeature = function (name) {
-        console.log("add feature invoked!!!");
-        console.log(name);
-        
-        var feature = new Feature({
-            Name: name,
-            ProjectId: $routeParams.projectId
-        });
-
-        feature.$save(function () {
-            $scope.features.push(feature);
-        });
-    };
-});

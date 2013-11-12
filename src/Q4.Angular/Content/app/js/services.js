@@ -27,3 +27,16 @@ q4AngularServices.factory('Feature', ['$resource',
           {},
           { update: { method: 'PUT' } });
   }]);
+
+q4AngularServices.factory('FeaturesByProject', ['$resource',
+    function($resource) {
+        return $resource('api/Featuresbyproject/:projectId', {});
+    }]);
+
+q4AngularServices.factory('Task', ['$resource',
+  function ($resource) {
+      return $resource(
+          'api/tasks/:taskId',
+          {},
+          { update: { method: 'PUT' } });
+  }]);

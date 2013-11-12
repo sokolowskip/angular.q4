@@ -10,9 +10,9 @@ namespace Q4.Angular.Controllers
 {
     public class FeaturesController : EFApiController
     {
-        public IEnumerable<Feature> Get(Guid projectId)
+        public Feature Get(Guid id)
         {
-            return context.Projects.First(x => x.ProjectId == projectId).Features;
+            return context.Projects.SelectMany(x => x.Features).First(x => x.FeatureId == id);
         }
 
         public void Post([FromBody] AddFeatureRequest request)
@@ -22,11 +22,13 @@ namespace Q4.Angular.Controllers
             project.Features.Add(feature);
             context.SaveChanges();
         }
-    }
 
-    public class GetFeaturesRequest
-    {
-        public Guid ProjectId { get; set; }
+        public void Put(Guid id, [FromBody] Feature feature)
+        {
+            var toUpdate = context.Projects.SelectMany(x => x.Features).First(x => x.FeatureId == id);
+            toUpdate.Name = feature.Name;
+            context.SaveChanges();
+        }
     }
 
     public class AddFeatureRequest

@@ -165,9 +165,11 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\EFApiController.cs" />
+    <Compile Include="Controllers\FeaturesByProjectController.cs" />
     <Compile Include="Controllers\FeaturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,11 +186,20 @@
     <Compile Include="Migrations\201311080906209_Add-Features.Designer.cs">
       <DependentUpon>201311080906209_Add-Features.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201311120949362_Add-Tasks.cs" />
+    <Compile Include="Migrations\201311120949362_Add-Tasks.Designer.cs">
+      <DependentUpon>201311120949362_Add-Tasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311121201243_Change-Name-Of-Developer.cs" />
+    <Compile Include="Migrations\201311121201243_Change-Name-Of-Developer.Designer.cs">
+      <DependentUpon>201311121201243_Change-Name-Of-Developer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AngularDbContext.cs" />
     <Compile Include="Models\Developer.cs" />
     <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,11 +212,12 @@
     <Content Include="Content\app\views\developers\create.html" />
     <Content Include="Content\app\views\developers\edit.html" />
     <Content Include="Content\app\views\developers\list.html" />
-    <Content Include="Content\app\views\features\new.html" />
+    <Content Include="Content\app\views\features\edit.html" />
     <Content Include="Content\app\views\projects-list.html" />
     <Content Include="Content\app\views\projects\edit.html" />
     <Content Include="Content\app\views\projects\list.html" />
     <Content Include="Content\app\views\projects\new.html" />
+    <Content Include="Content\app\views\tasks\new.html" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -624,6 +636,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311080906209_Add-Features.resx">
       <DependentUpon>201311080906209_Add-Features.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311120949362_Add-Tasks.resx">
+      <DependentUpon>201311120949362_Add-Tasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311121201243_Change-Name-Of-Developer.resx">
+      <DependentUpon>201311121201243_Change-Name-Of-Developer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
