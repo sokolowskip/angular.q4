@@ -31,5 +31,7 @@ namespace Q4.Angular
             Mapper.CreateMap<Project, ProjectDTO>();
             Mapper.CreateMap<Feature, FeatureDTO>();
         }
+
+
     }
 }

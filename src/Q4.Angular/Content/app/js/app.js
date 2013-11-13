@@ -6,6 +6,18 @@ var q4AngularApp = angular.module('q4AngularApp', [
     'q4AngularServices',
     'ui.bootstrap']);
 
+window.angular.module('q4AngularServices.global', []).factory('Global', function () {
+    var currentUser = window.user;
+    return {
+        currentUser: function() {
+            return currentUser;
+        },
+        isSignedIn: function() {
+            return !!currentUser;
+        }
+    };
+});
+
 q4AngularApp.config([
     '$routeProvider',
     function($routeProvider) {
@@ -148,3 +160,4 @@ q4AngularApp.directive("statcolumnchart", function () {
 
     };
 });
+

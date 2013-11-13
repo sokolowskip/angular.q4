@@ -169,6 +169,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="BasicHttpAuthorizeAttribute.cs" />
     <Compile Include="Controllers\FinishedTasksPerDayController.cs" />
     <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\EFApiController.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TasksPerStatusController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -205,6 +207,10 @@
     <Compile Include="Migrations\201311121341115_MoreProperties.cs" />
     <Compile Include="Migrations\201311121341115_MoreProperties.Designer.cs">
       <DependentUpon>201311121341115_MoreProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311122300355_UserManagment.cs" />
+    <Compile Include="Migrations\201311122300355_UserManagment.Designer.cs">
+      <DependentUpon>201311122300355_UserManagment.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AngularDbContext.cs" />
@@ -691,6 +697,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311121341115_MoreProperties.resx">
       <DependentUpon>201311121341115_MoreProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311122300355_UserManagment.resx">
+      <DependentUpon>201311122300355_UserManagment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,6 +1,27 @@
 ﻿'use strict';
 
-var q4AngularControllers = angular.module('q4AngularControllers', []);
+var q4AngularControllers = angular.module('q4AngularControllers', ['q4AngularServices.global']);
+
+q4AngularControllers.controller('loginCtrl', function($scope, $http, Base64, User) {
+    $scope.login = {};
+    $scope.login.user = null;
+
+    $scope.login.connect = function () {
+        $http.get('api/users').success(function (data, status) {
+            if (status < 200 || status >= 300)
+                return;
+            User.setCurrent(data);
+        });
+    };
+
+    $scope.login.disconnect = function () {
+        User.setCurrent(null);
+    };
+
+    $scope.$watch('login.login + login.password', function () {
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode($scope.login.login + ':' + $scope.login.password);
+    });
+});
 
 q4AngularControllers.controller('developersCtrl', function developersCtrl($scope, Developer) {
     $scope.developers = Developer.query();
