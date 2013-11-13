@@ -22,7 +22,7 @@
         <script src="~/Scripts/highcharts/highcharts.js"></script>
         <script src="~/Scripts/highcharts/modules/exporting.js"></script>
     </head>
-    <body>
+    <body ng-controller="loginCtrl">
         <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
             <div class="container">
                 <nav class="collapse navbar-collapse" role="navigation">
@@ -31,30 +31,40 @@
                         <li><a href="#/projects">Projects</a></li>
                         <li><a href="#/tasks/new">New Task</a></li>
                     </ul>
+                    <ul  class="nav navbar-nav pull-right" role="navigation" ng-show="login.user">
+                        <li><a class="hand-cursor" ng-click="login.disconnect()">Logout</a></li>                        
+                    </ul>
                 </nav>
             </div>
         </header>
+        
         <div class="container">
-            <div ng-controller="loginCtrl">
-              <div ng-hide="login.user">
-                <form action="" ng-submit="login.connect()">
-                  <fieldset>
-                    <legend>Login</legend>
-                    <p><input ng-model="login.login" name="email" type="text" placeholder="Login" required /></p>
-                    <p><input ng-model="login.password" name="password" type="password" placeholder="Password" required /></p>
-                    <p><button type="submit">Login</button></p>
-                  </fieldset>
-                </form>
-              </div>
-
-              <div ng-show="login.user">
-                <p>Welcome, {{login.user.userName}}!</p>
-                <p><button ng-click="login.disconnect()">Logout</button></p>
-              </div>
-            </div>
-            <div role="main">
-                <div ng-view></div>
-                @RenderBody()
+            <div >
+                <div ng-hide="login.user">
+                    <form class="form-horizontal" role="form" ng-submit="login.connect()">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="login">Login</label>
+                            <div class="col-sm-4">
+                                <input ng-model="login.login" name="login" type="text" placeholder="Login" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="password">Password</label>
+                            <div class="col-sm-4">
+                                <input ng-model="login.password" name="password" type="password" placeholder="Password" required />    
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary col-sm-offset-1" type="submit" value="Login"/>
+                        </div>
+                    </form>
+                </div>
+                
+                <div ng-show="login.user" role="main">
+                    <div ng-view></div>
+                    @RenderBody()
+                </div>
+            
             </div>
         </div>
     </body>

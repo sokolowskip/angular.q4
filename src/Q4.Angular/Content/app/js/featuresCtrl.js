@@ -64,3 +64,7 @@ q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Develope
         console.groupEnd("onProjectChanged");
     };
 });
+
+q4AngularControllers.controller('myTasksCtrl', function myTasksCtrl($scope, User) {
+
+});

@@ -7,15 +7,19 @@ q4AngularControllers.controller('loginCtrl', function($scope, $http, Base64, Use
     $scope.login.user = null;
 
     $scope.login.connect = function () {
+        console.log("try to login");
         $http.get('api/users').success(function (data, status) {
             if (status < 200 || status >= 300)
                 return;
             User.setCurrent(data);
+            $scope.login.user = User.getCurrent();
+            console.log($scope.user);
         });
     };
 
     $scope.login.disconnect = function () {
         User.setCurrent(null);
+        $scope.login.user = null;
     };
 
     $scope.$watch('login.login + login.password', function () {
