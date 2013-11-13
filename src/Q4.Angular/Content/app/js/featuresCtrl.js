@@ -26,7 +26,7 @@ q4AngularControllers.controller('featureDetailsCtrl', function featureDetailsCtr
     };
 });
 
-q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Developer, Project, Task, FeaturesByProject) {
+q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Developer, Project, Task, FeaturesByProject, $location) {
     $scope.featuresVisible = false;
 
     $scope.projects = Project.query();
@@ -49,7 +49,7 @@ q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Develope
         console.log(task);
 
         task.$save();
-
+        $location.path('mytasks');
         console.groupEnd('create task');
     };
 
@@ -65,6 +65,20 @@ q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Develope
     };
 });
 
-q4AngularControllers.controller('myTasksCtrl', function myTasksCtrl($scope, User) {
+q4AngularControllers.controller('myTasksCtrl', function myTasksCtrl($scope, User, $http) {
 
+    $scope.loadList = function () {
+        if (!User.getCurrent())
+            return;
+        console.log('User from myTasks Ctrl:');
+        console.log(User.getCurrent());
+        $http.get('/api/TasksForDeveloper/' + User.getCurrent().DeveloperId).success(function(data) {
+            console.log('get my tasks');
+            console.log(data);
+            $scope.tasks = data;
+        });
+        
+
+
+    };
 });

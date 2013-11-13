@@ -27,4 +27,25 @@ namespace Q4.Angular.Models
 
         public decimal? ExpectedWorkload { get; set; }
     }
+
+    public class TaskDTO
+    {
+        public Guid TaskId { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public DateTime? DueDate { get; set; }
+
+        public DateTime? FinishDate { get; set; }
+
+        public string Status { get; set; }
+
+        public decimal? ExpectedWorkload { get; set; }
+        
+        public string FeatureName { get; set; }
+        
+        public string ProjectName { get; set; }
+    }
 }

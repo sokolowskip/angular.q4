@@ -177,6 +177,7 @@
     <Compile Include="Controllers\FeaturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\TasksForDeveloperController.cs" />
     <Compile Include="Controllers\TasksPerStatusController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -235,6 +236,7 @@
     <Content Include="Content\app\views\projects\edit.html" />
     <Content Include="Content\app\views\projects\list.html" />
     <Content Include="Content\app\views\projects\new.html" />
+    <Content Include="Content\app\views\tasks\mytasks.html" />
     <Content Include="Content\app\views\tasks\new.html" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />

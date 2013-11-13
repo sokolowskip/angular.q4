@@ -44,22 +44,22 @@ q4AngularControllers.controller('projectStatisticsCtrl', function projectStatist
         console.log($scope.tasksPerStatus);
         console.groupEnd("TasksPerStatus");
      });
-    
-    FinishedTasksPerDay.query({ projectId: $routeParams.projectId }, function (data) {
-         console.group("FinishedTasksPerDay");
-         console.log(data);
-         $scope.finishedTasksPerDay = data.map(function(single) {
-             return {
-                 y: single.Count,
-                 x: new Date(single.Date)
-             };
-         });
+
+    FinishedTasksPerDay.query({ projectId: $routeParams.projectId }, function(data) {
+        console.group("FinishedTasksPerDay");
+        console.log(data);
+        $scope.finishedTasksPerDay = data.map(function(single) {
+            return {
+                y: single.Count,
+                x: new Date(single.Date)
+            };
+        });
         var toType = function(obj) {
-            return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+            return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
         };
-            
-         console.log($scope.finishedTasksPerDay);
+
+        console.log($scope.finishedTasksPerDay);
         console.log(toType($scope.finishedTasksPerDay[0].x));
-         console.groupEnd("FinishedTasksPerDay");
-     });
+        console.groupEnd("FinishedTasksPerDay");
+    });
 });

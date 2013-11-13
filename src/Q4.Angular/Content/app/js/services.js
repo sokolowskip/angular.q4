@@ -136,21 +136,15 @@ q4AngularServices.factory('Base64', function () {
     };
 });
 
-q4AngularServices.factory('User', function() {
-    var currentUser = null;
-
+q4AngularServices.factory('User', function($cookieStore) {
     return {
         
         getCurrent: function() {
-            return currentUser;
-        },
-        
-        isAuthenticated: function() {
-            return true;
+            return $cookieStore.get('current-user-angularjs');
         },
 
         setCurrent: function(user) {
-            currentUser = user;
+            $cookieStore.put('current-user-angularjs', user);
         }
     };
 })

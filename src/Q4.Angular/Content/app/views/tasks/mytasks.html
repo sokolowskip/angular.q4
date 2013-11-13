@@ -1,0 +1,36 @@
+﻿<h3>My tasks</h3>
+<ul ng-init="loadList()">
+    <li class="thumbnail" ng-repeat="task in tasks">
+        <div class="container">
+            <div class="row">
+                <h3 class="col-sm-12"><strong>{{task.Name}}</strong></h3>
+            </div>
+            <div class="row">
+                <p class="col-sm-1"><strong>Status</strong></p>
+                <p class="col-sm-11">{{task.Status}}</p>
+            </div>
+            <div class="row">
+                <p class="col-sm-1"><strong>Project</strong></p>
+                <p class="col-sm-11">{{task.ProjectName}}</p>
+            </div>
+            <div class="row">
+                <p class="col-sm-1"><strong>Feature</strong></p>
+                <p class="col-sm-11">{{task.FeatureName}}</p>
+            </div>
+            <div class="row">
+                <p class="col-sm-1"><strong>Workload</strong></p>
+                <p class="col-sm-1">{{task.ExpectedWorkload}}</p>
+                <p class="col-sm-1"><strong>Due date</strong></p>
+                <p class="col-sm-2">{{task.DueDate | date}}</p>
+            </div>
+            <div class="row">
+                <p class="col-sm-10"><small>{{task.Description}}</small></p>
+            </div>
+            <div class="row btn-group">
+                <button type="button" class="btn btn-primary">Start</button>
+                <button type="button" class="btn btn-success">Finish</button>
+                <button type="button" class="btn btn-danger">Reject</button>
+            </div>
+        </div>
+    </li>
+</ul>

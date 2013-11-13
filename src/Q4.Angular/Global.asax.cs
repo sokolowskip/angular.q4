@@ -30,6 +30,9 @@ namespace Q4.Angular
             var useless = new ListSourceMapper();
             Mapper.CreateMap<Project, ProjectDTO>();
             Mapper.CreateMap<Feature, FeatureDTO>();
+            Mapper.CreateMap<Task, TaskDTO>()
+                .ForMember(x => x.FeatureName, x => x.MapFrom(y => y.Feature.Name))
+                .ForMember(x => x.ProjectName, x => x.MapFrom(y => y.Feature.Project.Name));
         }
 
 

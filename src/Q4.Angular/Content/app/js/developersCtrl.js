@@ -2,9 +2,18 @@
 
 var q4AngularControllers = angular.module('q4AngularControllers', ['q4AngularServices.global']);
 
-q4AngularControllers.controller('loginCtrl', function($scope, $http, Base64, User) {
+q4AngularControllers.controller('loginCtrl', function ($scope, $http, Base64, User, $location) {
     $scope.login = {};
-    $scope.login.user = null;
+    $scope.user = null;
+    console.log("from login ctrl");
+    console.log(User.getCurrent());
+    var u = User.getCurrent();
+    if (u !== null) {
+        $scope.login.user = u;
+        $scope.login.login = u.Login;
+        $scope.login.password = u.Password;
+    }
+    
 
     $scope.login.connect = function () {
         console.log("try to login");
@@ -13,7 +22,7 @@ q4AngularControllers.controller('loginCtrl', function($scope, $http, Base64, Use
                 return;
             User.setCurrent(data);
             $scope.login.user = User.getCurrent();
-            console.log($scope.user);
+            $location.path('mytasks');
         });
     };
 

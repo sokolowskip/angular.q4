@@ -1,5 +1,3 @@
-- my tasks view
-- keep user information in cookie
 - after add task change view
 - bugfixing
   - column chart

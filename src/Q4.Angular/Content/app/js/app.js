@@ -4,7 +4,8 @@ var q4AngularApp = angular.module('q4AngularApp', [
     'ngRoute',
     'q4AngularControllers',
     'q4AngularServices',
-    'ui.bootstrap']);
+    'ui.bootstrap',
+    'ngCookies']);
 
 window.angular.module('q4AngularServices.global', []).factory('Global', function () {
     var currentUser = window.user;
@@ -29,7 +30,8 @@ q4AngularApp.config([
             .when('/projects/new', { templateUrl: 'Content/app/views/projects/new.html', controller: 'newProjectCtrl' })
             .when('/projects/:projectId/edit', { templateUrl: 'Content/app/views/projects/edit.html', controller: 'detailProjectCtrl' })
             .when('/features/:featureId/edit', { templateUrl: 'Content/app/views/features/edit.html', controller: 'featureDetailsCtrl' })
-            .when('/tasks/new', {templateUrl: 'Content/app/views/tasks/new.html', controller : 'tasksCtrl'})
+            .when('/tasks/new', { templateUrl: 'Content/app/views/tasks/new.html', controller: 'tasksCtrl' })
+            .when('/mytasks', {templateUrl : 'Content/app/views/tasks/mytasks.html', controller: 'myTasksCtrl'})
             ;
     }
 ]);
