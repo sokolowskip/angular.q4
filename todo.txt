@@ -1,4 +1,1 @@
-- after add task change view
-- bugfixing
-  - column chart
-  - edit feature
+- handle buttons on mytask

@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web.Http;
+using AutoMapper;
 using Q4.Angular.Models;
 
 namespace Q4.Angular.Controllers
 {
     public class FeaturesController : EFApiController
     {
-        public Feature Get(Guid id)
+        public FeatureDTO Get(Guid id)
         {
-            return context.Projects.SelectMany(x => x.Features).First(x => x.FeatureId == id);
+            return Mapper.Map<FeatureDTO>(context.Projects.SelectMany(x => x.Features).First(x => x.FeatureId == id));
         }
 
         public void Post([FromBody] AddFeatureRequest request)

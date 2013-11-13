@@ -1,7 +1,5 @@
 ﻿'use strict';
 
-/* Services */
-
 var q4AngularServices = angular.module('q4AngularServices', ['ngResource']);
 
 q4AngularServices.factory('Project', ['$resource',
