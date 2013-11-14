@@ -16,6 +16,7 @@
         <script src="~/Content/app/js/controllers.js"></script>
         <script src="~/Content/app/js/services.js"></script>
         <script src="~/Content/app/js/app.js"></script>
+        <script src="~/Content/app/js/errorHandling.js"></script>
         <script src="~/Scripts/jquery-1.9.1.min.js"></script>
         
         <script src="~/Scripts/highcharts/highcharts.js"></script>
@@ -37,7 +38,8 @@
                 </nav>
             </div>
         </header>
-        
+        <div app-messages></div>
+
         <div class="container">
             <div >
                 <div ng-hide="login.user">

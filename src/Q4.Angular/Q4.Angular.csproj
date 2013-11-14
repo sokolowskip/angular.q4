@@ -229,6 +229,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\app\js\app.js" />
     <Content Include="Content\app\js\controllers.js" />
+    <Content Include="Content\app\js\errorHandling.js" />
     <Content Include="Content\app\js\services.js" />
     <Content Include="Content\app\views\developers\create.html" />
     <Content Include="Content\app\views\developers\edit.html" />

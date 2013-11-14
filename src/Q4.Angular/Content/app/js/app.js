@@ -2,6 +2,7 @@
 
 var q4AngularApp = angular.module('q4AngularApp', [
     'ngRoute',
+    'globalErrors',
     'q4AngularControllers',
     'q4AngularServices',
     'ui.bootstrap',

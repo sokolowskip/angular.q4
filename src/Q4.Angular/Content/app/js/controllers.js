@@ -95,7 +95,7 @@ q4AngularControllers.controller('featureDetailsCtrl', function featureDetailsCtr
 
 q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Developer, Project, Task, FeaturesByProject, $location) {
     $scope.featuresVisible = false;
-
+    $scope.task = {};
     $scope.projects = Project.query();
 
     $scope.developers = Developer.query();
@@ -115,13 +115,15 @@ q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Develope
 
         console.log(task);
 
-        task.$save();
-        $location.path('mytasks');
+        task.$save(function() {
+            $location.path('mytasks');
+        });
         console.groupEnd('create task');
     };
 
     $scope.onProjectChanged = function () {
         console.group("onProjectChanged");
+        console.log($scope.task);
         console.log($scope.project);
 
         $scope.task.Feature = null;

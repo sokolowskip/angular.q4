@@ -2,17 +2,17 @@
     <div class="page-header">
         <h3>Edit project</h3>
     </div>
-    <form class="form-horizontal" role="form" ng-submit="update()" ng-init="findOne()">
+    <form class="form-horizontal" role="form" ng-submit="update()"  ng-init="findOne()">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="name">Name</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="project.Name" id="name" placeholder="Name"/>
+                <input type="text" class="form-control" ng-model="project.Name" id="name" required placeholder="Name"/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label" for="clientName">Client</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="project.ClientName" id="clientName" placeholder="Client Name"/>
+                <input type="text" class="form-control" ng-model="project.ClientName" id="clientName" required placeholder="Client Name"/>
             </div>
         </div>
        

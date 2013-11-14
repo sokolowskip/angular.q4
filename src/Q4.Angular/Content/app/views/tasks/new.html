@@ -7,23 +7,23 @@
         <div class="form-group">
             <label class="col-sm-2 control-label" for="developer">Developer</label>
             <div class="col-sm-4">
-                <select id="developer" class="form-control" name="developer" ng-options="(developer.FirstName + ' ' + developer.LastName) for developer in developers | orderBy:LastName" ng-model="task.Developer" required></select>
+                <select id="developer" required="" class="form-control" name="developer" ng-options="(developer.FirstName + ' ' + developer.LastName) for developer in developers | orderBy:LastName" ng-model="task.Developer"></select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label" for="project">Project</label>
             <div class="col-sm-4">
-                <select id="Select1" class="form-control" name="project" ng-options="project.Name for project in projects" ng-model="project" ng-change="onProjectChanged()"></select>
+                <select id="project" class="form-control" name="project" ng-options="project.Name for project in projects" ng-model="project" ng-change="onProjectChanged()"></select>
             </div>
             <label class="col-sm-1 control-label" for="feature" ng-show="featuresVisible">Feature</label>
             <div class="col-sm-4" ng-show="featuresVisible">
-                <select id="feature" class="form-control" name="feature" ng-options="feature.Name for feature in features" ng-model="task.Feature"></select>                
+                <select id="feature" class="form-control" name="feature" ng-options="feature.Name for feature in features"  ng-model="task.Feature"></select>                
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label" for="name">Name</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="task.Name" id="name" placeholder="Name"/>
+                <input type="text" class="form-control" ng-model="task.Name" required id="name" placeholder="Name"/>
             </div>
         </div>
         <div class="form-group">
