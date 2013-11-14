@@ -128,7 +128,10 @@ q4AngularApp.directive("statcolumnchart", function () {
                 },
                 xAxis: {
                     type: 'datetime',
-                    
+                    dateTimeLabelFormats: { 
+                        month: '%e. %b',
+                        year: '%b'
+                    }
                 },
                 yAxis: {
                     min: 0,

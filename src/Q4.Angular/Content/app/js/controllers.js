@@ -8,7 +8,7 @@ q4AngularControllers.controller('loginCtrl', function ($scope, $http, Base64, Us
     console.log("from login ctrl");
     console.log(User.getCurrent());
     var u = User.getCurrent();
-    if (u !== null) {
+    if (!!u) {
         $scope.login.user = u;
         $scope.login.login = u.Login;
         $scope.login.password = u.Password;
@@ -19,6 +19,7 @@ q4AngularControllers.controller('loginCtrl', function ($scope, $http, Base64, Us
     $scope.login.connect = function () {
         console.log("try to login");
         $http.get('api/users').success(function (data, status) {
+            console.log("login successful");
             if (status < 200 || status >= 300)
                 return;
             User.setCurrent(data);
@@ -143,9 +144,14 @@ q4AngularControllers.controller('myTasksCtrl', function myTasksCtrl($scope, User
             console.log(data);
             $scope.tasks = data;
         });
+    };
 
-
-
+    $scope.changeState = function (task, operation) {
+        console.log('change state method');
+        $http.put('/TaskManagament/' + operation + '/' + task.TaskId).success(function(data) {
+            console.log('change state method - success response to status: ' + data);
+            task.Status = data;
+        });
     };
 });
 
@@ -211,4 +217,5 @@ q4AngularControllers.controller('projectStatisticsCtrl', function projectStatist
         console.log(toType($scope.finishedTasksPerDay[0].x));
         console.groupEnd("FinishedTasksPerDay");
     });
+    
 });

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using Q4.Angular.Models;
 
 namespace Q4.Angular.Controllers
 {
@@ -13,12 +14,5 @@ namespace Q4.Angular.Controllers
                 .GroupBy(x => x.FinishDate)
                 .Select(x => new FinishedTaskPerDay {Count = x.Count(), Date = x.Key.Value});
         }
-    }
-
-    public class FinishedTaskPerDay
-    {
-        public DateTime Date { get; set; }
-
-        public int Count { get; set; }
     }
 }

@@ -31,11 +31,4 @@ namespace Q4.Angular.Controllers
             context.SaveChanges();
         }
     }
-
-    public class AddFeatureRequest
-    {
-        public string Name { get; set; }
-
-        public Guid ProjectId { get; set; }
-    }
 }
