@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var q4AngularControllers = angular.module('q4AngularControllers', ['q4AngularServices.global']);
+var q4AngularControllers = angular.module('q4AngularControllers', []);
 
 q4AngularControllers.controller('loginCtrl', function ($scope, $http, Base64, User, $location) {
     $scope.login = {};
@@ -60,27 +60,12 @@ q4AngularControllers.controller('developersDetailCtrl', function developersDetai
     };
 
     $scope.update = function () {
-        console.log($scope.developer.BirthDate);
         $scope.developer.$update({ developerId: $routeParams.developerId });
     };
 });
 
-q4AngularControllers.controller('featuresCtrl', function featuresCtrl($scope, $routeParams, Feature) {
-    $scope.features = Feature.queryByProject({ projectId: $routeParams.projectId });
-
-    $scope.addFeature = function (name) {
-        console.log("add feature invoked!!!");
-        console.log(name);
-
-        var feature = new Feature({
-            Name: name,
-            ProjectId: $routeParams.projectId
-        });
-
-        feature.$save(function () {
-            $scope.features.push(feature);
-        });
-    };
+q4AngularControllers.controller('featuresCtrl', function featuresCtrl($scope, $routeParams, Project) {
+    
 });
 
 q4AngularControllers.controller('featureDetailsCtrl', function featureDetailsCtrl($scope, $routeParams, Feature) {
@@ -101,9 +86,6 @@ q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Develope
     $scope.developers = Developer.query();
 
     $scope.create = function () {
-        console.group('create task');
-        console.log($scope.task);
-
         var task = new Task({
             Name: $scope.task.Name,
             ExpectedWorkload: $scope.task.ExpectedWorkload,
@@ -113,24 +95,15 @@ q4AngularControllers.controller('tasksCtrl', function tasksCtrl($scope, Develope
             Feature: $scope.task.Feature
         });
 
-        console.log(task);
-
         task.$save(function() {
             $location.path('mytasks');
         });
-        console.groupEnd('create task');
     };
 
     $scope.onProjectChanged = function () {
-        console.group("onProjectChanged");
-        console.log($scope.task);
-        console.log($scope.project);
-
         $scope.task.Feature = null;
         $scope.features = FeaturesByProject.query({ projectId: $scope.project.ProjectId });
         $scope.featuresVisible = true;
-
-        console.groupEnd("onProjectChanged");
     };
 });
 
@@ -139,19 +112,13 @@ q4AngularControllers.controller('myTasksCtrl', function myTasksCtrl($scope, User
     $scope.loadList = function () {
         if (!User.getCurrent())
             return;
-        console.log('User from myTasks Ctrl:');
-        console.log(User.getCurrent());
         $http.get('/api/TasksForDeveloper/' + User.getCurrent().DeveloperId).success(function (data) {
-            console.log('get my tasks');
-            console.log(data);
             $scope.tasks = data;
         });
     };
 
     $scope.changeState = function (task, operation) {
-        console.log('change state method');
         $http.put('/TaskManagament/' + operation + '/' + task.TaskId).success(function(data) {
-            console.log('change state method - success response to status: ' + data);
             task.Status = data;
         });
     };
@@ -177,47 +144,43 @@ q4AngularControllers.controller('newProjectCtrl', function newProjectsCtrl($scop
     };
 });
 
-q4AngularControllers.controller('detailProjectCtrl', function detailProjectsCtrl($scope, $routeParams, Project) {
+q4AngularControllers.controller('detailProjectCtrl', function detailProjectsCtrl($scope, $routeParams, Project, Feature) {
     $scope.findOne = function () {
         $scope.project = Project.get({ projectId: $routeParams.projectId });
-        console.log($scope.project);
     };
 
     $scope.update = function () {
         $scope.project.$update({ projectId: $routeParams.projectId });
     };
-});
-
-q4AngularControllers.controller('projectStatisticsCtrl', function projectStatisticsCtrl($scope, $routeParams, TasksPerStatus, FinishedTasksPerDay) {
-    TasksPerStatus.query({ projectId: $routeParams.projectId }, function (data) {
-        console.group("TasksPerStatus");
-        console.log(data);
+    
+    Project.queryTasksPerStatus({ projectId: $routeParams.projectId }, function (data) {
         $scope.tasksPerStatus = data.map(function (single) {
             return {
                 y: single.Count,
                 name: single.StatusName
             };
         });
-        console.log($scope.tasksPerStatus);
-        console.groupEnd("TasksPerStatus");
     });
 
-    FinishedTasksPerDay.query({ projectId: $routeParams.projectId }, function (data) {
-        console.group("FinishedTasksPerDay");
-        console.log(data);
+    Project.queryFinishedTasksPerDay({ projectId: $routeParams.projectId }, function (data) {
         $scope.finishedTasksPerDay = data.map(function (single) {
             return {
                 y: single.Count,
                 x: new Date(single.Date)
             };
         });
-        var toType = function (obj) {
-            return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
-        };
-
-        console.log($scope.finishedTasksPerDay);
-        console.log(toType($scope.finishedTasksPerDay[0].x));
-        console.groupEnd("FinishedTasksPerDay");
     });
     
+    $scope.features = Project.queryFeatures({ projectId: $routeParams.projectId });
+
+    $scope.addFeature = function (name) {
+        var feature = new Feature({
+            Name: name,
+            ProjectId: $routeParams.projectId
+        });
+
+        feature.$save(function () {
+            $scope.features.push(feature);
+        });
+    };
 });

@@ -11,7 +11,6 @@ namespace Q4.Angular.Controllers
         {
             var login = Thread.CurrentPrincipal.Identity.Name;
             return context.Developers.First(x => x.Login == login);
-           
         }
 
     }

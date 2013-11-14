@@ -2,55 +2,85 @@
 
 var q4AngularServices = angular.module('q4AngularServices', ['ngResource']);
 
-q4AngularServices.factory('Project', ['$resource',
-  function ($resource) {
-      return $resource(
-          'api/projects/:projectId',
-          {},
-          { update: { method: 'PUT' } });
-  }]);
+q4AngularServices.factory('Project', [
+    '$resource',
+    function($resource) {
+        return $resource(
+            'api/projects/:projectId',
+            {},
+            {
+                update: { method: 'PUT' },
+                queryTasksPerStatus: { method: 'GET', isArray: true, url: 'api/projects/:projectId/tasksperstatus' },
+                queryFinishedTasksPerDay: { method: 'GET', isArray: true, url: 'api/projects/:projectId/FinishedTaskPerDay' },
+                queryFeatures: { method: 'GET', isArray: true, url: 'api/projects/:projectId/features' }
+            });
+    }
+]);
 
-q4AngularServices.factory('Developer', ['$resource',
-  function ($resource) {
-      return $resource(
-          'api/developers/:developerId',
-          {},
-          { update: { method: 'PUT' } });
-  }]);
+q4AngularServices.factory('Developer', [
+    '$resource',
+    function($resource) {
+        return $resource(
+            'api/developers/:developerId',
+            {},
+            { update: { method: 'PUT' } });
+    }
+]);
 
-q4AngularServices.factory('Feature', ['$resource',
-  function ($resource) {
-      return $resource(
-          'api/features/:featureId',
-          {},
-      {
-          update: { method: 'PUT' },
-          queryByProject: {method: 'GET', isArray: true, url: 'api/features/project/:projectId'}
-      });
-  }]);
+q4AngularServices.factory('Feature', [
+    '$resource',
+    function($resource) {
+        return $resource(
+            'api/features/:featureId',
+            {},
+            {
+                update: { method: 'PUT' }
+            });
+    }
+]);
 
-q4AngularServices.factory('FeaturesByProject', ['$resource',
+q4AngularServices.factory('FeaturesByProject', [
+    '$resource',
     function($resource) {
         return $resource('api/Featuresbyproject/:projectId', {});
-    }]);
+    }
+]);
 
-q4AngularServices.factory('TasksPerStatus', ['$resource',
-    function ($resource) {
+q4AngularServices.factory('TasksPerStatus', [
+    '$resource',
+    function($resource) {
         return $resource('api/TasksPerStatus/:projectId', {});
-    }]);
+    }
+]);
 
-q4AngularServices.factory('FinishedTasksPerDay', ['$resource',
-    function ($resource) {
+q4AngularServices.factory('FinishedTasksPerDay', [
+    '$resource',
+    function($resource) {
         return $resource('api/FinishedTasksPerDay/:projectId', {});
-    }]);
+    }
+]);
 
-q4AngularServices.factory('Task', ['$resource',
-  function ($resource) {
-      return $resource(
-          'api/tasks/:taskId',
-          {},
-          { update: { method: 'PUT' } });
-  }]);
+q4AngularServices.factory('Task', [
+    '$resource',
+    function($resource) {
+        return $resource(
+            'api/tasks/:taskId',
+            {},
+            { update: { method: 'PUT' } });
+    }
+]);
+
+q4AngularServices.factory('User', function($cookieStore) {
+    return {
+        getCurrent: function() {
+            return $cookieStore.get('current-user-angularjs');
+        },
+
+        setCurrent: function(user) {
+            $cookieStore.put('current-user-angularjs', user);
+        }
+    };
+});
 
 q4AngularServices.factory('Base64', function () {
     var keyStr = 'ABCDEFGHIJKLMNOP' +
@@ -136,16 +166,3 @@ q4AngularServices.factory('Base64', function () {
         }
     };
 });
-
-q4AngularServices.factory('User', function($cookieStore) {
-    return {
-        
-        getCurrent: function() {
-            return $cookieStore.get('current-user-angularjs');
-        },
-
-        setCurrent: function(user) {
-            $cookieStore.put('current-user-angularjs', user);
-        }
-    };
-})

@@ -12,9 +12,19 @@ namespace Q4.Angular
         {
             config.Routes.MapHttpRoute(
               name: "FeaturesByProjectApi",
-              routeTemplate: "api/features/project/{id}",
-              defaults: new { controller = "features", action = "GetForProject", id = RouteParameter.Optional }
+              routeTemplate: "api/projects/{projectId}/features",
+              defaults: new { controller = "projects", action = "GetFeatures", id = RouteParameter.Optional }
             );
+            config.Routes.MapHttpRoute(
+                name: "GetTaskPerStatusApi",
+                routeTemplate: "api/projects/{projectId}/tasksperstatus",
+                defaults: new { controller = "projects", action = "GetTaskPerStatus", id = RouteParameter.Optional }
+                );
+            config.Routes.MapHttpRoute(
+                name: "FinishedTaskPerDayApi",
+                routeTemplate: "api/projects/{projectId}/FinishedTaskPerDay",
+                defaults: new { controller = "projects", action = "GetFinishedTaskPerDay", id = RouteParameter.Optional }
+                );
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
