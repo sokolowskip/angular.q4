@@ -65,8 +65,8 @@ q4AngularControllers.controller('developersDetailCtrl', function developersDetai
     };
 });
 
-q4AngularControllers.controller('featuresCtrl', function featuresCtrl($scope, $routeParams, Feature, FeaturesByProject) {
-    $scope.features = FeaturesByProject.query({ projectId: $routeParams.projectId });
+q4AngularControllers.controller('featuresCtrl', function featuresCtrl($scope, $routeParams, Feature) {
+    $scope.features = Feature.queryByProject({ projectId: $routeParams.projectId });
 
     $scope.addFeature = function (name) {
         console.log("add feature invoked!!!");

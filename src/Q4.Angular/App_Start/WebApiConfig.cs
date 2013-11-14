@@ -11,6 +11,11 @@ namespace Q4.Angular
         public static void Register(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
+              name: "FeaturesByProjectApi",
+              routeTemplate: "api/features/project/{id}",
+              defaults: new { controller = "features", action = "GetForProject", id = RouteParameter.Optional }
+            );
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

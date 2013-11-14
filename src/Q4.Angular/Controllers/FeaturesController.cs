@@ -11,6 +11,12 @@ namespace Q4.Angular.Controllers
 {
     public class FeaturesController : EFApiController
     {
+        [HttpGet]
+        public IEnumerable<FeatureDTO> GetForProject(Guid id)
+        {
+            return context.Projects.First(x => x.ProjectId == id).Features.Select(Mapper.Map<FeatureDTO>);
+        }
+
         public FeatureDTO Get(Guid id)
         {
             return Mapper.Map<FeatureDTO>(context.Projects.SelectMany(x => x.Features).First(x => x.FeatureId == id));

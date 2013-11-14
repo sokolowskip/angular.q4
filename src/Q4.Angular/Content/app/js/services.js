@@ -23,7 +23,10 @@ q4AngularServices.factory('Feature', ['$resource',
       return $resource(
           'api/features/:featureId',
           {},
-          { update: { method: 'PUT' } });
+      {
+          update: { method: 'PUT' },
+          queryByProject: {method: 'GET', isArray: true, url: 'api/features/project/:projectId'}
+      });
   }]);
 
 q4AngularServices.factory('FeaturesByProject', ['$resource',

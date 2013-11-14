@@ -177,7 +177,6 @@
     <Compile Include="Controllers\FinishedTasksPerDayController.cs" />
     <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\EFApiController.cs" />
-    <Compile Include="Controllers\FeaturesByProjectController.cs" />
     <Compile Include="Controllers\FeaturesController.cs" />
     <Compile Include="Models\GroupedByStatus.cs" />
     <Compile Include="Controllers\HomeController.cs" />
